@@ -11,11 +11,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('FirstPage', function () {
-    return view('FirstController');
-});
+Route::get('/FirstPage', [FirstController::class,'dashboard']);
 
-// Route::get('Params', function (){
-//     return view('FirstController');
-// });
 

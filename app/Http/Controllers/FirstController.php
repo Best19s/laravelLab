@@ -14,6 +14,10 @@ class FirstController extends Controller
         return "Hello, we got $number";
     }
 
+    public function dashboard() {
+        return view("FirstController");
+    }
+
     public function showLayout() {
         return view("child");
     }
