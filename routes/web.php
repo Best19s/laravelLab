@@ -11,13 +11,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\CourseController;
-Route::get('/course/{nameCourse}', [CourseController::class, 'getCourse']);
 
-use App\Http\Controllers\InformationController;
-use App\Http\Controllers\AboutController;
-Route::get('/info/{name}/{dept}', [InformationController::class, 'index']);
-Route::get('/about', [AboutController::class, 'index']);
 
-use App\Http\Controllers\FoodsController;
-Route::get('/food', [FoodsController::class,'index']);
+use App\Http\Controllers\CompanyController;
+Route::get('company', [CompanyController::class,'index']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
